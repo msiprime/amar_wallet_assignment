@@ -1,5 +1,5 @@
 import 'package:amar_wallet_assignment/global/widgets/app_bar.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:amar_wallet_assignment/global/widgets/app_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -14,12 +14,47 @@ class HomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       appBar: HomeAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Gap(8),
-            CardCarousel(images: imageURLs),
-            SizedBox(height: 300),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Column(
+            children: [
+              const Gap(8),
+              AppCarouselSlider(
+                imageUrls: imageURLs,
+                height: MediaQuery.sizeOf(context).height * 0.33,
+              ),
+              const Gap(16),
+              const Text(
+                'Welcome to Amar Wallet',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Gap(16),
+              Container(
+                height: 30,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey.shade900,
+                    width: 3,
+                  ),
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 3,
+                    ),
+                    color: Colors.grey.shade900,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -58,36 +93,6 @@ class HomeFloatingActionButton extends StatelessWidget {
         );
       },
       icon: const Icon(Icons.add),
-    );
-  }
-}
-
-class CardCarousel extends StatelessWidget {
-  final List<String> images;
-
-  const CardCarousel({super.key, required this.images});
-
-  @override
-  Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: height * 0.3),
-      child: CarouselView.weighted(
-        flexWeights: [1],
-        itemSnapping: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        shrinkExtent: 350,
-        children: images.map((String url) {
-          return ClipRect(
-            child: CachedNetworkImage(
-              imageUrl: url,
-              fit: BoxFit.fitWidth,
-            ),
-          );
-        }).toList(),
-      ),
     );
   }
 }
