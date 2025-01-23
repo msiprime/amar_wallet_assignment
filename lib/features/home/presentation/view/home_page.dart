@@ -1,5 +1,5 @@
+import 'package:amar_wallet_assignment/global/widgets/app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -8,89 +8,93 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          AppBarSliver(),
-          SliverGap(16),
-          SliverToBoxAdapter(
-            child: CarouselSlider(
-              items: [
-                Container(
-                  height: 100,
-                  color: Colors.red,
-                  child: Center(
-                    child: Text('Page 1'),
-                  ),
-                ),
-                Container(
-                  height: 100,
-                  color: Colors.green,
-                  child: Center(
-                    child: Text('Page 2'),
-                  ),
-                ),
-                // ... Add more carousel items here
-              ],
-              options: CarouselOptions(
-                height: 100.0, // Adjust height as needed
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: true,
-                initialPage: 0,
-                onPageChanged: (index, reason) {
-                  // Handle page change if needed
-                },
-              ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return ListTile(
-                  title: Text('Item #$index'),
-                );
-              },
-              childCount: 10,
-            ),
-          ),
-        ],
+    return Scaffold(
+      floatingActionButton: HomeFloatingActionButton(),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      appBar: HomeAppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Gap(8),
+            CardCarousel(images: imageURLs),
+            SizedBox(height: 300),
+          ],
+        ),
       ),
     );
   }
 }
 
-class AppBarSliver extends StatelessWidget {
-  const AppBarSliver({
+class HomeFloatingActionButton extends StatelessWidget {
+  const HomeFloatingActionButton({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      title: CircleAvatar(
-        radius: 24,
-        backgroundImage: CachedNetworkImageProvider(
-          'https://avatars.githubusercontent.com/u/107892662?v=4',
-        ),
+    return FloatingActionButton.extended(
+      label: const Text('Add to wallet'),
+      isExtended: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
       ),
-      floating: false,
-      pinned: true,
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.notifications_none),
-          onPressed: () {},
-        ),
-      ],
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: Duration(seconds: 2),
+            action: SnackBarAction(
+              label: 'Close',
+              onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              },
+            ),
+            hitTestBehavior: HitTestBehavior.opaque,
+            behavior: SnackBarBehavior.floating,
+            closeIconColor: Colors.blue,
+            dismissDirection: DismissDirection.startToEnd,
+            content: Text('Added to wallet'),
+          ),
+        );
+      },
+      icon: const Icon(Icons.add),
     );
   }
 }
+
+class CardCarousel extends StatelessWidget {
+  final List<String> images;
+
+  const CardCarousel({super.key, required this.images});
+
+  @override
+  Widget build(BuildContext context) {
+    final double height = MediaQuery.sizeOf(context).height;
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: height * 0.3),
+      child: CarouselView.weighted(
+        flexWeights: [1],
+        itemSnapping: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        shrinkExtent: 350,
+        children: images.map((String url) {
+          return ClipRect(
+            child: CachedNetworkImage(
+              imageUrl: url,
+              fit: BoxFit.fitWidth,
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
+
+const List<String> imageURLs = [
+  'https://i.ibb.co.com/mbcvj7G/bank4.png',
+  'https://i.ibb.co.com/L5vM9mt/bank2.png',
+  'https://i.ibb.co.com/RBNXbqk/bank3.png',
+  'https://i.ibb.co.com/4SzG3fZ/bank1.png',
+];
