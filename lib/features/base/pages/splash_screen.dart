@@ -1,5 +1,5 @@
 import 'package:amar_wallet_assignment/features/base/bloc/app_meta_data_cubit/app_meta_data_cubit.dart';
-import 'package:amar_wallet_assignment/features/home/presentation/view/home_view/home_page.dart';
+import 'package:amar_wallet_assignment/features/home/presentation/view/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';

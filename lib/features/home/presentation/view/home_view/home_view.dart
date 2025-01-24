@@ -1,4 +1,4 @@
-import 'package:amar_wallet_assignment/features/home/presentation/view/barcode_scanner_view/barcode_scanner_screen.dart';
+import 'package:amar_wallet_assignment/features/home/presentation/view/barcode_scanner_view/barcode_scanner_view.dart';
 import 'package:amar_wallet_assignment/features/home/presentation/widget/wallet_card_widget.dart';
 import 'package:amar_wallet_assignment/global/extensions/context_extensions.dart';
 import 'package:amar_wallet_assignment/global/widgets/app_bar.dart';
