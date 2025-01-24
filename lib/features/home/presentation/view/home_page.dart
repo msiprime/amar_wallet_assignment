@@ -1,4 +1,5 @@
 import 'package:amar_wallet_assignment/features/home/presentation/widget/wallet_card_widget.dart';
+import 'package:amar_wallet_assignment/global/extensions/context_extensions.dart';
 import 'package:amar_wallet_assignment/global/widgets/app_bar.dart';
 import 'package:amar_wallet_assignment/global/widgets/app_carousel.dart';
 import 'package:flutter/material.dart';
@@ -22,17 +23,20 @@ class HomePage extends StatelessWidget {
               const Gap(8),
               AppCarouselSlider(
                 imageUrls: imageURLs,
-                height: MediaQuery.sizeOf(context).height * 0.30,
+                height: context.height * 0.33,
               ),
-              const Text(
-                'Welcome to Amar Wallet',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+              const Gap(16),
+              WalletCardWidget(
+                imageUrl: 'https://i.ibb.co.com/HCwcrXd/kfc.png',
+                storeName: 'K F C',
+                cardType: 'Gift Card',
               ),
-              const Gap(8),
-              WalletCardWidget(),
+              const Gap(16),
+              WalletCardWidget(
+                imageUrl: 'https://i.ibb.co.com/6PgJJcX/starbucks.png',
+                storeName: 'Starbucks',
+                cardType: 'Loyalty Card',
+              ),
             ],
           ),
         ),

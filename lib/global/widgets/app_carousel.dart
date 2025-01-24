@@ -56,13 +56,13 @@ class AppCarouselSlider extends StatelessWidget {
               autoPlay: autoPlay,
               aspectRatio: 16 / 9,
               viewportFraction: 1.0,
-              height: height - 20,
+              height: height - 30,
               onPageChanged: (index, reason) {
                 _currentIndexNotifier.value = index;
               },
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 16),
           ValueListenableBuilder(
             valueListenable: _currentIndexNotifier,
             builder: (context, value, child) {
