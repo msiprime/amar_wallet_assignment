@@ -1,3 +1,4 @@
+import 'package:amar_wallet_assignment/features/home/presentation/view/barcode_scanner_view/barcode_scanner_screen.dart';
 import 'package:amar_wallet_assignment/features/home/presentation/widget/wallet_card_widget.dart';
 import 'package:amar_wallet_assignment/global/extensions/context_extensions.dart';
 import 'package:amar_wallet_assignment/global/widgets/app_bar.dart';
@@ -37,6 +38,7 @@ class HomePage extends StatelessWidget {
                 storeName: 'Starbucks',
                 cardType: 'Loyalty Card',
               ),
+              const Gap(16),
             ],
           ),
         ),
@@ -59,20 +61,10 @@ class HomeFloatingActionButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       onPressed: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: Duration(seconds: 2),
-            action: SnackBarAction(
-              label: 'Close',
-              onPressed: () {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              },
-            ),
-            hitTestBehavior: HitTestBehavior.opaque,
-            behavior: SnackBarBehavior.floating,
-            closeIconColor: Colors.blue,
-            dismissDirection: DismissDirection.startToEnd,
-            content: Text('Added to wallet'),
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BarcodeScannerScreen(),
           ),
         );
       },

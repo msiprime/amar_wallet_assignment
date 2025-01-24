@@ -352,6 +352,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.15.0"
+  mobile_scanner:
+    dependency: "direct main"
+    description:
+      name: mobile_scanner
+      sha256: "57d6269d10912d5d583606b46d963d7c5d0299d2c37add8b7192dd769d40a319"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.3"
   nested:
     dependency: transitive
     description:
@@ -384,6 +392,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  palette_generator:
+    dependency: "direct main"
+    description:
+      name: palette_generator
+      sha256: "0b20245c451f14a5ca0818ab7a377765162389f8e8f0db361cceabf0fed9d1ea"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.3+5"
   path:
     dependency: transitive
     description:

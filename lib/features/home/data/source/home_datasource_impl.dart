@@ -15,6 +15,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567890",
     "cardType": "Gift Card",
     "imageUrl": "https://i.ibb.co.com/pjBrvhw/burgerking.png",
+    "memberId": "2345234523445",
   },
   {
     "storeName": "Cattelan Italia",
@@ -22,6 +23,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567891",
     "cardType": "Loyalty Card",
     "imageUrl": "https://i.ibb.co.com/g9JmybQ/cattelan.png",
+    "memberId": "2345234523446",
   },
   {
     "storeName": "Chipotle",
@@ -29,6 +31,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567892",
     "cardType": "Gift Card",
     "imageUrl": "https://i.ibb.co.com/cr6F2LJ/chipotle.png",
+    "memberId": "2345234523447",
   },
   {
     "storeName": "Domino's Pizza",
@@ -36,6 +39,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567893",
     "cardType": "Loyalty Card",
     "imageUrl": "https://i.ibb.co.com/S07rWtT/dominos.png",
+    "memberId": "2345234523448",
   },
   {
     "storeName": "KFC",
@@ -43,6 +47,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567894",
     "cardType": "Gift Card",
     "imageUrl": "https://i.ibb.co.com/HCwcrXd/kfc.png",
+    "memberId": "2345234523449",
   },
   {
     "storeName": "Molteni & C",
@@ -50,6 +55,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567895",
     "cardType": "Loyalty Card",
     "imageUrl": "https://i.ibb.co.com/CQhx9zq/molteni.jpg",
+    "memberId": "2345234523450",
   },
   {
     "storeName": "Papa John's",
@@ -57,6 +63,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567896",
     "cardType": "Gift Card",
     "imageUrl": "https://i.ibb.co.com/y03WxgD/papajohns.jpg",
+    "memberId": "2345234523451",
   },
   {
     "storeName": "Starbucks",
@@ -64,6 +71,7 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567897",
     "cardType": "Loyalty Card",
     "imageUrl": "https://i.ibb.co.com/6PgJJcX/starbucks.png",
+    "memberId": "2345234523452",
   },
   {
     "storeName": "Wendy's",
@@ -71,5 +79,6 @@ final List<Map<String, dynamic>> cardsDataset = [
     "barcodeNumber": "1234567898",
     "cardType": "Gift Card",
     "imageUrl": "https://i.ibb.co.com/GcwjVFV/wendys.png",
+    "memberId": "2345234523453",
   },
 ];
