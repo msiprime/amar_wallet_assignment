@@ -56,7 +56,7 @@ class AppCarouselSlider extends StatelessWidget {
               autoPlay: autoPlay,
               aspectRatio: 16 / 9,
               viewportFraction: 1.0,
-              height: height - 50,
+              height: height - 20,
               onPageChanged: (index, reason) {
                 _currentIndexNotifier.value = index;
               },
@@ -72,8 +72,9 @@ class AppCarouselSlider extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 6.0),
                     child: CustomPaint(
-                      size: const Size(20, 20),
-                      painter: CircleIndicatorPainter(isActive: index == value),
+                      size: const Size(10, 10),
+                      painter: CircleIndicatorPainter(
+                          isActive: index == value, context: context),
                     ),
                   );
                 }),
@@ -88,42 +89,35 @@ class AppCarouselSlider extends StatelessWidget {
 
 class CircleIndicatorPainter extends CustomPainter {
   final bool isActive;
+  final BuildContext context;
 
-  CircleIndicatorPainter({required this.isActive});
+  CircleIndicatorPainter({required this.isActive, required this.context});
 
   @override
   void paint(Canvas canvas, Size size) {
     final double outerRadius = size.width / 2;
-    final double innerRadius = outerRadius - 3;
+    final double innerRadius = outerRadius - 2;
+
+    // Get the current theme data
+    final ThemeData themeData = Theme.of(context);
 
     // Paint for outer circle (border)
     final Paint borderPaint = Paint()
-      ..color = Colors.grey.shade900
+      ..color = themeData.colorScheme.onSurface
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 3;
+      ..strokeWidth = 1.25;
 
     // Paint for inner filled circle (if active)
     final Paint fillPaint = Paint()
-      ..color = isActive ? Colors.black : Colors.transparent
-      ..style = PaintingStyle.fill;
-    //
-    // // Paint for inner border circle (only if active)
-    // final Paint innerBorderPaint = Paint()
-    //   ..color = Colors.white
-    //   ..style = PaintingStyle.stroke
-    //   ..strokeWidth = 3;
+      ..color = isActive
+          ? themeData.colorScheme.onSurface
+          : themeData.colorScheme.surface
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 3
+      ..strokeCap = StrokeCap.round;
 
-    // Draw the outer circle
     canvas.drawCircle(size.center(Offset.zero), outerRadius, borderPaint);
-
-    if (isActive) {
-      // Draw the inner filled circle
-      canvas.drawCircle(size.center(Offset.zero), innerRadius, fillPaint);
-
-      // Draw the inner border circle
-      // canvas.drawCircle(
-      //     size.center(Offset.zero), innerRadius - 3, innerBorderPaint);
-    }
+    canvas.drawCircle(size.center(Offset.zero), innerRadius, fillPaint);
   }
 
   @override

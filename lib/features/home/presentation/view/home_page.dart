@@ -1,3 +1,4 @@
+import 'package:amar_wallet_assignment/features/home/presentation/widget/wallet_card_widget.dart';
 import 'package:amar_wallet_assignment/global/widgets/app_bar.dart';
 import 'package:amar_wallet_assignment/global/widgets/app_carousel.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,8 @@ class HomePage extends StatelessWidget {
               const Gap(8),
               AppCarouselSlider(
                 imageUrls: imageURLs,
-                height: MediaQuery.sizeOf(context).height * 0.33,
+                height: MediaQuery.sizeOf(context).height * 0.30,
               ),
-              const Gap(16),
               const Text(
                 'Welcome to Amar Wallet',
                 style: TextStyle(
@@ -31,28 +31,8 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Gap(16),
-              Container(
-                height: 30,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey.shade900,
-                    width: 3,
-                  ),
-                  color: Colors.red,
-                  shape: BoxShape.circle,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 3,
-                    ),
-                    color: Colors.grey.shade900,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              )
+              const Gap(8),
+              WalletCardWidget(),
             ],
           ),
         ),

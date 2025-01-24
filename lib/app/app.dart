@@ -27,7 +27,7 @@ class _AppState extends State<App> {
               ),
             ],
             child: MaterialApp(
-              // theme: ThemeData.dark(),
+              theme: ThemeData.light(),
               home: SplashScreen(),
               debugShowCheckedModeBanner: false,
               builder: (context, routerWidget) => Builder(
