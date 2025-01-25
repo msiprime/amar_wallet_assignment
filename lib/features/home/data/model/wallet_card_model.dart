@@ -1,6 +1,7 @@
 import 'package:amar_wallet_assignment/features/home/domain/entity/wallet_card_entity.dart';
+import 'package:hive/hive.dart';
 
-class WalletCardModel {
+class WalletCardModel extends HiveObject {
   final String? barcodeNumber;
   final String? storeType;
   final String? storeName;
@@ -26,6 +27,31 @@ class WalletCardModel {
   }
 }
 
+class WalletCardModelAdapter extends TypeAdapter<WalletCardModel> {
+  @override
+  final int typeId = 0;
+
+  @override
+  WalletCardModel read(BinaryReader reader) {
+    return WalletCardModel(
+      barcodeNumber: reader.readString(),
+      storeType: reader.readString(),
+      storeName: reader.readString(),
+      cardType: reader.readString(),
+      imageUrl: reader.readString(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, WalletCardModel obj) {
+    writer.writeString(obj.barcodeNumber ?? '');
+    writer.writeString(obj.storeType ?? '');
+    writer.writeString(obj.storeName ?? '');
+    writer.writeString(obj.cardType ?? '');
+    writer.writeString(obj.imageUrl ?? '');
+  }
+}
+
 extension WalletCardModelToEntity on WalletCardModel {
   WalletCardDetailsEntity toEntity() {
     return WalletCardDetailsEntity(
@@ -34,6 +60,18 @@ extension WalletCardModelToEntity on WalletCardModel {
       storeName: storeName ?? '',
       cardType: cardType ?? '',
       imageUrl: imageUrl ?? '',
+    );
+  }
+}
+
+extension WalletCardEntityToModel on WalletCardDetailsEntity {
+  WalletCardModel toModel() {
+    return WalletCardModel(
+      barcodeNumber: barcodeNumber,
+      storeType: storeType,
+      cardType: cardType,
+      imageUrl: imageUrl,
+      storeName: storeName,
     );
   }
 }

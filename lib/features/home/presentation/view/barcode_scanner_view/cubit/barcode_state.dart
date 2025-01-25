@@ -9,15 +9,29 @@ final class BarcodeInitial extends BarcodeState {
   List<Object> get props => [];
 }
 
+final class BarcodeLoading extends BarcodeState {
+  @override
+  List<Object> get props => [];
+}
+
 final class BarcodeScanned extends BarcodeState {
-  final String barcode;
+  final String barcodeNumber;
 
   BarcodeScanned(
-    this.barcode,
+    this.barcodeNumber,
   );
 
   @override
-  List<Object> get props => [barcode];
+  List<Object> get props => [barcodeNumber];
+}
+
+final class WalletFound extends BarcodeState {
+  final WalletCardDetailsEntity wallet;
+
+  WalletFound(this.wallet);
+
+  @override
+  List<Object> get props => [wallet];
 }
 
 final class BarcodeError extends BarcodeState {
@@ -29,29 +43,11 @@ final class BarcodeError extends BarcodeState {
   List<Object> get props => [message];
 }
 
-//  Barcode? _barcode;
-//
-//   Widget _buildBarcode(Barcode? value) {
-//     if (value == null) {
-//       return const Text(
-//         'Scan something!',
-//         overflow: TextOverflow.fade,
-//         style: TextStyle(color: Colors.white),
-//       );
-//     }
-//
-//     return Text(
-//       value.displayValue ?? 'No display value.',
-//       overflow: TextOverflow.fade,
-//       style: const TextStyle(color: Colors.white),
-//     );
-//   }
-//
-//   void _handleBarcode(BarcodeCapture barcodes) {
-//     if (mounted) {
-//       setState(() {
-//         log('Barcode: ${barcodes.barcodes.firstOrNull}');
-//         _barcode = barcodes.barcodes.firstOrNull;
-//       });
-//     }
-//   }
+final class WalletAdded extends BarcodeState {
+  final List<WalletCardDetailsEntity> wallets;
+
+  WalletAdded(this.wallets);
+
+  @override
+  List<Object> get props => [wallets];
+}
