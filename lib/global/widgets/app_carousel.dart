@@ -105,7 +105,7 @@ class CircleIndicatorPainter extends CustomPainter {
     final Paint borderPaint = Paint()
       ..color = themeData.colorScheme.onSurface
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.25;
+      ..strokeWidth = 1.24;
 
     // Paint for inner filled circle (if active)
     final Paint fillPaint = Paint()
