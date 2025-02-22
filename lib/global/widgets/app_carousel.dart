@@ -12,7 +12,7 @@ class AppCarouselSlider extends StatelessWidget {
   final Color activeIndicatorColor;
   final Color inactiveIndicatorColor;
   final double height;
-  final double radius = 12;
+  final double radius = 12.0;
 
   AppCarouselSlider({
     super.key,
@@ -98,16 +98,13 @@ class CircleIndicatorPainter extends CustomPainter {
     final double outerRadius = size.width / 2;
     final double innerRadius = outerRadius - 2;
 
-    // Get the current theme data
     final ThemeData themeData = Theme.of(context);
 
-    // Paint for outer circle (border)
     final Paint borderPaint = Paint()
       ..color = themeData.colorScheme.onSurface
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.24;
 
-    // Paint for inner filled circle (if active)
     final Paint fillPaint = Paint()
       ..color = isActive
           ? themeData.colorScheme.onSurface
