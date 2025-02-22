@@ -22,7 +22,7 @@ class AppCarouselSlider extends StatelessWidget {
     this.selectedIndicatorSize = 8.0,
     this.autoPlay = true,
     this.enlargeCenterPage = true,
-    this.activeIndicatorColor = Colors.black,
+    this.activeIndicatorColor = Colors.purple,
     this.inactiveIndicatorColor = Colors.grey,
     required this.height,
   });
