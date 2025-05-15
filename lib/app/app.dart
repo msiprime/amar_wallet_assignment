@@ -23,7 +23,7 @@ class _AppState extends State<App> {
               ),
             ],
             child: MaterialApp(
-              title: '6amMart Squash and Merge',
+              title: '6amMart Squash and asdsad Merge',
               theme: ThemeData.light(),
               home: SplashScreen(),
               debugShowCheckedModeBanner: false,
