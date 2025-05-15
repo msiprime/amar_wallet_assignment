@@ -4,8 +4,12 @@ import 'package:amar_wallet_assignment/features/base/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
+/// The root widget of the application.
+///
+/// This widget sets up the BLoC providers, routing, theming, and localization
+/// for the entire app. It also handles connectivity status.
 class App extends StatefulWidget {
+  /// Creates a [App].
   const App({super.key});
 
   @override
@@ -23,7 +27,6 @@ class _AppState extends State<App> {
               ),
             ],
             child: MaterialApp(
-              title: '6amMart Squash and asdsad Merge',
               theme: ThemeData.light(),
               home: SplashScreen(),
               debugShowCheckedModeBanner: false,
