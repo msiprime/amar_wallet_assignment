@@ -23,7 +23,7 @@ class _AppState extends State<App> {
               ),
             ],
             child: MaterialApp(
-              title: '6amMart Delivery',
+              title: '6amMart',
               theme: ThemeData.light(),
               home: SplashScreen(),
               debugShowCheckedModeBanner: false,
